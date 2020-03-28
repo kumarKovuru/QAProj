@@ -1,0 +1,53 @@
+﻿@model IEnumerable<eMids.QA.Application.Common.Patient>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Patient List</h2>
+<p>
+    <a asp-action="Create"><input type="button" value="Create" class="btn btn-success" style="float: right;margin-bottom:4px"/></a>
+</p>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberId)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberId)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PatientId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PatientId }) |
+                    @Html.ActionLink("Delete", "GetById", new { id = item.PatientId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
