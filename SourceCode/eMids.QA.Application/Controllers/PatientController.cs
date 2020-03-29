@@ -1,4 +1,4 @@
-﻿using eMids.QA.Application.Business;
+using eMids.QA.Application.Business;
 using eMids.QA.Application.Business.Patient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -68,7 +68,6 @@ namespace eMids.QA.Application.Controllers
             }
         }
 
-        // GET: Todo/Delete/5
         [HttpGet]
         public ActionResult GetById(int id)
         {
@@ -76,13 +75,11 @@ namespace eMids.QA.Application.Controllers
         }
 
         // POST: Todo/Delete/5
-        [HttpPost]
         public ActionResult Delete(int id)
         {
             try
             {
                 _patientBusiness.Delete(id);
-
                 return RedirectToAction(nameof(Index));
             }
             catch
