@@ -33,6 +33,7 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId}, new { @class = "btn btn-success" }) 
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.PatientId }, new { @class = "btn btn-primary" })
     <a asp-action="Index"><input type="button" value="Cancel" class="btn btn-danger" /></a>
 </div>
