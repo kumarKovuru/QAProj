@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMids.QA.Application", "eMi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMids.QA.Application.Common", "eMids.QA.Application.Common\eMids.QA.Application.Common.csproj", "{772AD28B-1EF3-4548-98FC-1B46C149E4C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMids.QA.Application.Test", "eMids.QA.Application.Test\eMids.QA.Application.Test.csproj", "{EF75CC46-1857-46A3-B761-3B326597E6A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{772AD28B-1EF3-4548-98FC-1B46C149E4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772AD28B-1EF3-4548-98FC-1B46C149E4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772AD28B-1EF3-4548-98FC-1B46C149E4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF75CC46-1857-46A3-B761-3B326597E6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF75CC46-1857-46A3-B761-3B326597E6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF75CC46-1857-46A3-B761-3B326597E6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF75CC46-1857-46A3-B761-3B326597E6A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
