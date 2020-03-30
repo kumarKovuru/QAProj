@@ -29,7 +29,6 @@ namespace eMids.QA.Application.Controllers
                 }
                 else
                 {
-                    patients = new List<Common.Patient>();
                     ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                 }
             }
@@ -59,7 +58,6 @@ namespace eMids.QA.Application.Controllers
                 }
                 else
                 {
-                    patient = new Common.Patient();
                     ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                 }
             }
@@ -84,7 +82,7 @@ namespace eMids.QA.Application.Controllers
                     else
                     {
                         ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                        return RedirectToAction(nameof(Index));
+                        return RedirectToAction();
                     }
                 }
 
@@ -111,7 +109,6 @@ namespace eMids.QA.Application.Controllers
                 }
                 else
                 {
-                    patient = new Common.Patient();
                     ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                 }
             }
@@ -137,7 +134,7 @@ namespace eMids.QA.Application.Controllers
                     else
                     {
                         ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                        return RedirectToAction(nameof(Index));
+                        return RedirectToAction();
                     }
                 }
 
@@ -166,7 +163,7 @@ namespace eMids.QA.Application.Controllers
                     else
                     {
                         ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                        return RedirectToAction(nameof(Index));
+                        return RedirectToAction();
                     }
                 }
 
