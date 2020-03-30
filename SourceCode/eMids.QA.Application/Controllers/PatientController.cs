@@ -10,17 +10,14 @@ namespace eMids.QA.Application.Controllers
 {
     public class PatientController : Controller
     {
-        private readonly ApplicationConfiguration appConfig;
-        public PatientController(IOptions<ApplicationConfiguration> configuration)
-        {
-            appConfig = configuration.Value;
-        }
+        private readonly string WebAPIUrl = "https://localhost:5001/api/";
+        
         public IActionResult Index()
         {
             List<Common.Patient> patients = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                client.BaseAddress = new Uri(WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientList");
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -50,7 +47,7 @@ namespace eMids.QA.Application.Controllers
             Common.Patient patient = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                client.BaseAddress = new Uri(WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -70,19 +67,13 @@ namespace eMids.QA.Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Common.Patient patient)
         {
             try
             {
-                Common.Patient patient = new Common.Patient()
-                {
-                    FirstName = collection["FirstName"],
-                    LastName = collection["LastName"],
-                    MemberId = collection["MemberId"]
-                };
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                    client.BaseAddress = new Uri(WebAPIUrl);
                     var responseTask = client.PostAsJsonAsync<Common.Patient>("Patient/CreatePatient", patient);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -108,7 +99,7 @@ namespace eMids.QA.Application.Controllers
             Common.Patient patient = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                client.BaseAddress = new Uri(WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -129,20 +120,13 @@ namespace eMids.QA.Application.Controllers
 
         // POST: Todo/Edit/5
         [HttpPost]
-        public ActionResult Edit(IFormCollection collection)
+        public ActionResult Edit(Common.Patient patient)
         {
             try
             {
-                Common.Patient patient = new Common.Patient()
-                {
-                    PatientId = Convert.ToInt32(collection["PatientId"]),
-                    FirstName = collection["FirstName"],
-                    LastName = collection["LastName"],
-                    MemberId = collection["MemberId"]
-                };
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                    client.BaseAddress = new Uri(WebAPIUrl);
                     var responseTask = client.PutAsJsonAsync<Common.Patient>("Patient/UpdatePatient", patient);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -171,7 +155,7 @@ namespace eMids.QA.Application.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                    client.BaseAddress = new Uri(WebAPIUrl);
                     var responseTask = client.DeleteAsync("Patient/DeletePatient?id=" + id.ToString());
                     responseTask.Wait();
                     var result = responseTask.Result;
