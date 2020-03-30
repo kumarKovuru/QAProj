@@ -1,22 +1,41 @@
-using eMids.QA.Application.Business;
-using eMids.QA.Application.Business.Patient;
+using eMids.QA.Application.Common.Config;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace eMids.QA.Application.Controllers
 {
     public class PatientController : Controller
     {
-        private readonly IPatientBusiness _patientBusiness;
-
-        public PatientController()
+        private readonly ApplicationConfiguration appConfig;
+        public PatientController(IOptions<ApplicationConfiguration> configuration)
         {
-            _patientBusiness = new PatientBusiness();
+            appConfig = configuration.Value;
         }
         public IActionResult Index()
         {
-            var patients = _patientBusiness.GetPatientList();
+            List<Common.Patient> patients = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                var responseTask = client.GetAsync("Patient/GetPatientList");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<Common.Patient>>();
+                    readTask.Wait();
+                    patients = readTask.Result;
+                }
+                else
+                {
+                    patients = new List<Common.Patient>();
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
             return View(patients);
         }
 
@@ -28,7 +47,25 @@ namespace eMids.QA.Application.Controllers
 
         public ActionResult Details(int id)
         {
-            var patient = _patientBusiness.GetById(id);
+            Common.Patient patient = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Common.Patient>();
+                    readTask.Wait();
+                    patient = readTask.Result;
+                }
+                else
+                {
+                    patient = new Common.Patient();
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
             return View(patient);
         }
 
@@ -37,9 +74,29 @@ namespace eMids.QA.Application.Controllers
         {
             try
             {
-                _patientBusiness.Create(new Common.Patient { FirstName = collection["FirstName"], LastName = collection["LastName"], MemberId = collection["MemberId"] });
+                Common.Patient patient = new Common.Patient()
+                {
+                    FirstName = collection["FirstName"],
+                    LastName = collection["LastName"],
+                    MemberId = collection["MemberId"]
+                };
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                    var responseTask = client.PostAsJsonAsync<Common.Patient>("Patient/CreatePatient", patient);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
 
-                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -48,7 +105,25 @@ namespace eMids.QA.Application.Controllers
         }
         public ActionResult Edit(int id)
         {
-            var patient = _patientBusiness.GetById(id);
+            Common.Patient patient = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Common.Patient>();
+                    readTask.Wait();
+                    patient = readTask.Result;
+                }
+                else
+                {
+                    patient = new Common.Patient();
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
             return View(patient);
         }
 
@@ -58,9 +133,30 @@ namespace eMids.QA.Application.Controllers
         {
             try
             {
-                _patientBusiness.Edit(new Common.Patient { PatientId = Convert.ToInt32(collection["PatientId"]), FirstName = collection["FirstName"], LastName = collection["LastName"], MemberId = collection["MemberId"] });
+                Common.Patient patient = new Common.Patient()
+                {
+                    PatientId = Convert.ToInt32(collection["PatientId"]),
+                    FirstName = collection["FirstName"],
+                    LastName = collection["LastName"],
+                    MemberId = collection["MemberId"]
+                };
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                    var responseTask = client.PutAsJsonAsync<Common.Patient>("Patient/UpdatePatient", patient);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
 
-                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -68,19 +164,28 @@ namespace eMids.QA.Application.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult GetById(int id)
-        {
-            return View("~/Views/Patient/Delete.cshtml", _patientBusiness.GetById(id));
-        }
-
         // POST: Todo/Delete/5
         public ActionResult Delete(int id)
         {
             try
             {
-                _patientBusiness.Delete(id);
-                return RedirectToAction(nameof(Index));
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(appConfig.WebAPIUrl);
+                    var responseTask = client.DeleteAsync("Patient/DeletePatient?id=" + id.ToString());
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+
             }
             catch
             {

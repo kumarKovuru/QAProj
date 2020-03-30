@@ -28,7 +28,7 @@ namespace eMids.QA.Application
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.Configure<ApplicationConfiguration>(Configuration.GetSection("ApplicationConfiguration"));
             var appSettingsSection = Configuration.GetSection("ApplicationConfiguration");
             var appSettings = appSettingsSection.Get<ApplicationConfiguration>();
             DatabaseProvider<MySqlClientFactory>.Set("MySql.Connection", appSettings.DatabaseConnectionString);

@@ -16,7 +16,6 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\eMids.QA.Application.Business\eMids.QA.Application.Business.csproj" />
     <ProjectReference Include="..\eMids.QA.Application.Common\eMids.QA.Application.Common.csproj" />
   </ItemGroup>
 
