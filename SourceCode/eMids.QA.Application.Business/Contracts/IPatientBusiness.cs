@@ -7,7 +7,7 @@ namespace eMids.QA.Application.Business
     public interface IPatientBusiness
     {
         List<Common.Patient> GetPatientList();
-        void Create(Common.Patient patient);
+        int Create(Common.Patient patient);
         void Edit(QA.Application.Common.Patient patient);
         void Delete(int patientId);
         QA.Application.Common.Patient GetById(int patientId);

@@ -35,7 +35,7 @@ namespace eMids.QA.Application.DataAccess.Patient
             return patientList;
         }
 
-        public void Create(QA.Application.Common.Patient patient)
+        public int Create(QA.Application.Common.Patient patient)
         {
             try
             {
@@ -59,8 +59,22 @@ namespace eMids.QA.Application.DataAccess.Patient
                     DbType = DbType.String
                 };
 
-                DataAccess<MySqlClientFactory>
-                     .ExecuteProcedure("Sp_SavePatient", parameters);
+                int patientId = 0;
+                patient = DataAccess<MySqlClientFactory>
+                    .ExecuteReaderProcedure("Sp_SavePatient",
+                    (reader) =>
+                    {
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+                                patientId = ConverterHelper.ConvertIntColumnValue(reader["PatientId"]);
+                            }
+                        }
+                        return patient;
+                    }, parameters);
+                return patientId;
             }
             catch
             {

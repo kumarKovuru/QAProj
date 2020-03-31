@@ -16,9 +16,9 @@ namespace eMids.QA.Application.Business.Patient
         {
             return _patientDataAccess.GetPatientList();
         }
-        public void Create(QA.Application.Common.Patient patient)
+        public int Create(QA.Application.Common.Patient patient)
         {
-            _patientDataAccess.Create(patient);
+            return _patientDataAccess.Create(patient);
         }
 
         public void Edit(QA.Application.Common.Patient patient)

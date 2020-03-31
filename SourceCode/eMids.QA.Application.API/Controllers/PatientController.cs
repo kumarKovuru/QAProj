@@ -35,8 +35,8 @@ namespace eMids.QA.Application.API.Controllers
         [Route("CreatePatient")]
         public IActionResult Create(Common.Patient patient)
         {
-            _patientBusiness.Create(patient);
-            return Ok();
+            int id = _patientBusiness.Create(patient);
+            return Ok(id);
         }
 
         [HttpPut]
