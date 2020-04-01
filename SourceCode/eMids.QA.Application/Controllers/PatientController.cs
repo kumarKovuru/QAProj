@@ -10,7 +10,7 @@ namespace eMids.QA.Application.Controllers
 {
     public class PatientController : Controller
     {
-        private readonly string WebAPIUrl = "https://localhost:5001/api/";
+        private readonly string WebAPIUrl = "http://172.16.103.51:5070/api/";
         
         public IActionResult Index()
         {
