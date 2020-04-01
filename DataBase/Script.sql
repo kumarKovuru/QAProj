@@ -124,11 +124,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `Sp_SavePatient`(
 FirstName VARCHAR(200)
-,LastName VARCHAR(200), 
-MemberId VARCHAR(200))
+,LastName VARCHAR(200)
+,MemberId VARCHAR(200))
 BEGIN
 INSERT INTO Patient (FirstName, LastName, MemberId)
 VALUES (FirstName, LastName, MemberId);
+SELECT last_insert_id() AS PatientId;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
