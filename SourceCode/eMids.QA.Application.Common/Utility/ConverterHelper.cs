@@ -45,7 +45,7 @@ namespace eMids.QA.Application.Common
             return 0;
         }
 
-        public static DateTime? ConvertDateColumnValue(object value)
+        public static DateTime ConvertDateColumnValue(object value)
         {
             if (value != DBNull.Value && value != null && (ConverterHelper.GetStringValue(value).Length > 0) &&
                 ConverterHelper.GetStringValue(value) != "__/__/____")
@@ -57,7 +57,7 @@ namespace eMids.QA.Application.Common
                 return Convert.ToDateTime(value, CultureInfo.CurrentCulture);
             }
 
-            return null;
+            return DateTime.Now.Date;
         }
         public static bool? ConvertBitColumnValue(object value)
         {
@@ -132,6 +132,19 @@ namespace eMids.QA.Application.Common
                 return Convert.ToInt64(value, CultureInfo.CurrentCulture);
             }
             return null;
+        }
+
+        public static float ConvertNumberToSingle(object value)
+        {
+            if (ConverterHelper.GetStringValue(value).Length > 0)
+            {
+                if (value.GetType().ToString().IndexOf("MySqlParameter") > 0)
+                {
+                    return Convert.ToSingle(((MySql.Data.MySqlClient.MySqlParameter)value).Value);
+                }
+                return Convert.ToSingle(value, CultureInfo.CurrentCulture);
+            }
+            return 0;
         }
 
     }

@@ -26,7 +26,13 @@ namespace eMids.QA.Application.DataAccess.Patient
                                 PatientId = ConverterHelper.ConvertIntColumnValue(reader["PatientId"]),
                                 FirstName = ConverterHelper.GetStringValue(reader["FirstName"]),
                                 LastName = ConverterHelper.GetStringValue(reader["LastName"]),
-                                MemberId = ConverterHelper.GetStringValue(reader["MemberId"])
+                                MemberId = ConverterHelper.GetStringValue(reader["MemberId"]),
+                                DateOfBirth = ConverterHelper.ConvertDateColumnValue(reader["DateOfBirth"]),
+                                Gender = ConverterHelper.GetStringValue(reader["Gender"]),
+                                Height = ConverterHelper.ConvertNumberToSingle(reader["Height"]),
+                                Identifier = ConverterHelper.GetStringValue(reader["Identifier"]),
+                                PhoneNumber = ConverterHelper.GetStringValue(reader["PhoneNumber"]),
+                                Weight = ConverterHelper.ConvertNumberToSingle(reader["Weight"]),
                             });
                         }
                     }
@@ -39,7 +45,7 @@ namespace eMids.QA.Application.DataAccess.Patient
         {
             try
             {
-                MySqlParameter[] parameters = new MySqlParameter[3];
+                MySqlParameter[] parameters = new MySqlParameter[8];
                 parameters[0] = new MySqlParameter()
                 {
                     ParameterName = "@FirstName",
@@ -56,6 +62,36 @@ namespace eMids.QA.Application.DataAccess.Patient
                 {
                     ParameterName = "@MemberId",
                     Value = patient.MemberId,
+                    DbType = DbType.String
+                };
+                parameters[3] = new MySqlParameter()
+                {
+                    ParameterName = "@DateOfBirth",
+                    Value = patient.DateOfBirth,
+                    DbType = DbType.Date
+                };
+                parameters[4] = new MySqlParameter()
+                {
+                    ParameterName = "@PhoneNumber",
+                    Value = patient.PhoneNumber,
+                    DbType = DbType.String
+                };
+                parameters[5] = new MySqlParameter()
+                {
+                    ParameterName = "@Height",
+                    Value = patient.Height,
+                    DbType = DbType.Single
+                };
+                parameters[6] = new MySqlParameter()
+                {
+                    ParameterName = "@Weight",
+                    Value = patient.Weight,
+                    DbType = DbType.Single
+                };
+                parameters[7] = new MySqlParameter()
+                {
+                    ParameterName = "@Gender",
+                    Value = patient.Gender,
                     DbType = DbType.String
                 };
 
@@ -87,7 +123,7 @@ namespace eMids.QA.Application.DataAccess.Patient
         {
             try
             {
-                MySqlParameter[] parameters = new MySqlParameter[4];
+                MySqlParameter[] parameters = new MySqlParameter[9];
                 parameters[0] = new MySqlParameter()
                 {
                     ParameterName = "@PatientId",
@@ -110,6 +146,36 @@ namespace eMids.QA.Application.DataAccess.Patient
                 {
                     ParameterName = "@MemberId",
                     Value = patient.MemberId,
+                    DbType = DbType.String
+                };
+                parameters[4] = new MySqlParameter()
+                {
+                    ParameterName = "@DateOfBirth",
+                    Value = patient.DateOfBirth,
+                    DbType = DbType.Date
+                };
+                parameters[5] = new MySqlParameter()
+                {
+                    ParameterName = "@PhoneNumber",
+                    Value = patient.PhoneNumber,
+                    DbType = DbType.String
+                };
+                parameters[6] = new MySqlParameter()
+                {
+                    ParameterName = "@Height",
+                    Value = patient.Height,
+                    DbType = DbType.Single
+                };
+                parameters[7] = new MySqlParameter()
+                {
+                    ParameterName = "@Weight",
+                    Value = patient.Weight,
+                    DbType = DbType.Single
+                };
+                parameters[8] = new MySqlParameter()
+                {
+                    ParameterName = "@Gender",
+                    Value = patient.Gender,
                     DbType = DbType.String
                 };
 
@@ -172,7 +238,13 @@ namespace eMids.QA.Application.DataAccess.Patient
                                     PatientId = ConverterHelper.ConvertIntColumnValue(reader["PatientId"]),
                                     FirstName = ConverterHelper.GetStringValue(reader["FirstName"]),
                                     LastName = ConverterHelper.GetStringValue(reader["LastName"]),
-                                    MemberId = ConverterHelper.GetStringValue(reader["MemberId"])
+                                    MemberId = ConverterHelper.GetStringValue(reader["MemberId"]),
+                                    DateOfBirth = ConverterHelper.ConvertDateColumnValue(reader["DateOfBirth"]),
+                                    Gender = ConverterHelper.GetStringValue(reader["Gender"]),
+                                    Height = ConverterHelper.ConvertNumberToSingle(reader["Height"]),
+                                    Identifier = ConverterHelper.GetStringValue(reader["Identifier"]),
+                                    PhoneNumber = ConverterHelper.GetStringValue(reader["PhoneNumber"]),
+                                    Weight = ConverterHelper.ConvertNumberToSingle(reader["Weight"]),
                                 });
                             }
                         }

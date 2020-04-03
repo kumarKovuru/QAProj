@@ -1,5 +1,9 @@
 ﻿using ADO.DataAccessHelper;
+using eMids.QA.Application.Business;
+using eMids.QA.Application.Business.Patient;
 using eMids.QA.Application.Common.Config;
+using eMids.QA.Application.DataAccess.Contracts;
+using eMids.QA.Application.DataAccess.Patient;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -55,12 +59,15 @@ namespace eMids.QA.Application.API
                 });
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
+            services.AddScoped<ModelValidationErrorHandlerFilter>();
             services.Configure<ApplicationConfiguration>(Configuration.GetSection("ApplicationConfiguration"));
 
             // configure jwt authentication
             var appSettingsSection = Configuration.GetSection("ApplicationConfiguration");
             var appSettings = appSettingsSection.Get<ApplicationConfiguration>();
             DatabaseProvider<MySqlClientFactory>.Set("MySql.Connection", appSettings.DatabaseConnectionString);
+            services.AddScoped<IPatientDataAccess, PatientDataAccess>();
+            services.AddScoped<IPatientBusiness, PatientBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

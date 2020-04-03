@@ -1,5 +1,6 @@
 ﻿using eMids.QA.Application.Business;
 using eMids.QA.Application.Business.Patient;
+using eMids.QA.Application.Common.Config;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eMids.QA.Application.API.Controllers
@@ -10,9 +11,9 @@ namespace eMids.QA.Application.API.Controllers
     {
         private readonly IPatientBusiness _patientBusiness;
 
-        public PatientController()
+        public PatientController(IPatientBusiness patientBusiness)
         {
-            _patientBusiness = new PatientBusiness();
+            _patientBusiness = patientBusiness;
         }
 
         [HttpGet]
@@ -33,6 +34,7 @@ namespace eMids.QA.Application.API.Controllers
 
         [HttpPost]
         [Route("CreatePatient")]
+        [ServiceFilter(typeof(ModelValidationErrorHandlerFilter), Order = 1)]
         public IActionResult Create(Common.Patient patient)
         {
             int id = _patientBusiness.Create(patient);
@@ -41,6 +43,7 @@ namespace eMids.QA.Application.API.Controllers
 
         [HttpPut]
         [Route("UpdatePatient")]
+        [ServiceFilter(typeof(ModelValidationErrorHandlerFilter), Order = 1)]
         public ActionResult Edit(Common.Patient patient)
         {
             _patientBusiness.Edit(patient);

@@ -21,5 +21,20 @@ namespace eMids.QA.Application.Common
         [Display(Name = "Member Id")]
         [Required]
         public string MemberId { get; set; }
+
+        public string Identifier { get; set; }
+
+        [Display(Name = "Date of Birth")]
+        public DateTime DateOfBirth { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        public string Gender { get; set; }
+
+        public float Height { get; set; }
+
+        public float Weight { get; set; }
+
     }
 }
