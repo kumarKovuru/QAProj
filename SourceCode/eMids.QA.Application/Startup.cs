@@ -1,5 +1,6 @@
 ﻿using ADO.DataAccessHelper;
 using eMids.QA.Application.Common.Config;
+using eMids.QA.Application.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,7 @@ namespace eMids.QA.Application
             var appSettings = appSettingsSection.Get<ApplicationConfiguration>();
             DatabaseProvider<MySqlClientFactory>.Set("MySql.Connection", appSettings.DatabaseConnectionString);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<IApplicationConfiguration>(appSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

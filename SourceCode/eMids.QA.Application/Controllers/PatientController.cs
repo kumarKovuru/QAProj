@@ -1,7 +1,5 @@
 using eMids.QA.Application.Common.Config;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -11,8 +9,13 @@ namespace eMids.QA.Application.Controllers
     public class PatientController : Controller
     {
         private readonly string WebAPIUrl = "http://172.16.103.51:5070/api/";
-        
-        public IActionResult Index()
+
+        //private readonly IApplicationConfiguration _appConfig;
+        //public PatientController(IApplicationConfiguration appConfig)
+        //{
+        //    _appConfig = appConfig;
+        //}
+        public ActionResult Index()
         {
             List<Common.Patient> patients = null;
             using (var client = new HttpClient())
@@ -25,7 +28,10 @@ namespace eMids.QA.Application.Controllers
                 {
                     var readTask = result.Content.ReadAsAsync<List<Common.Patient>>();
                     readTask.Wait();
-                    patients = readTask.Result;
+                    if (readTask.Result == null)
+                        patients = new List<Common.Patient>();
+                    else
+                        patients = readTask.Result;
                 }
                 else
                 {
@@ -36,7 +42,7 @@ namespace eMids.QA.Application.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public ActionResult Create()
         {
             return View();
         }

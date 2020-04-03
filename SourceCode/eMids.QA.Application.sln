@@ -9,10 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMids.QA.Application.Common
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMids.QA.Application.Test", "eMids.QA.Application.Test\eMids.QA.Application.Test.csproj", "{F08B6AE6-2512-4424-A680-6483FE3C179C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMids.QA.Application.Business", "eMids.QA.Application.Business\eMids.QA.Application.Business.csproj", "{6F75EF5C-D857-43ED-8716-022D8E411A5E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMids.QA.Application.DataAccess", "eMids.QA.Application.DataAccess\eMids.QA.Application.DataAccess.csproj", "{962ED0F8-1E64-475D-BCB2-E253AC182CF0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,14 +27,6 @@ Global
 		{F08B6AE6-2512-4424-A680-6483FE3C179C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F08B6AE6-2512-4424-A680-6483FE3C179C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F08B6AE6-2512-4424-A680-6483FE3C179C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F75EF5C-D857-43ED-8716-022D8E411A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F75EF5C-D857-43ED-8716-022D8E411A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F75EF5C-D857-43ED-8716-022D8E411A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F75EF5C-D857-43ED-8716-022D8E411A5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{962ED0F8-1E64-475D-BCB2-E253AC182CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{962ED0F8-1E64-475D-BCB2-E253AC182CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{962ED0F8-1E64-475D-BCB2-E253AC182CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{962ED0F8-1E64-475D-BCB2-E253AC182CF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
