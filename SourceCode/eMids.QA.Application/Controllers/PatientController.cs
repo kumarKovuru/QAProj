@@ -179,5 +179,28 @@ namespace eMids.QA.Application.Controllers
                 return View();
             }
         }
+
+        public ActionResult GetById(int id)
+        {
+            Common.Patient patient = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(WebAPIUrl);
+                var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Common.Patient>();
+                    readTask.Wait();
+                    patient = readTask.Result;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
+            return View(patient);
+        }
     }
 }

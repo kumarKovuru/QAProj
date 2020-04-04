@@ -1,5 +1,4 @@
-﻿using eMids.QA.Application.Controllers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace eMids.QA.Application.Test
         [When(@"User Calls NewPatientRegistrationUsingAPI method")]
         public void WhenUserCallsNewPatientRegistrationUsingAPIMethod()
         {
-            PatientController con = new PatientController();
+           // PatientController con = new PatientController();
             Common.Patient patient = new Common.Patient()
             {
                 FirstName = Convert.ToString((ScenarioContext.Current["FirstName"])),
