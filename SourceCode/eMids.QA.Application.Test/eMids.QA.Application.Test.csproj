@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="ComponentTestingofPatient - Copy.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ExtentReports" Version="4.1.0-alpha2" />
     <PackageReference Include="ExtentReports.Core" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
@@ -51,10 +55,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="NewPatientRegistrationSteps.cs">
+    <Compile Update="PatientUsingComponentSteps.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="NewPatientRegistrationUsingAPISteps.cs">
+    <Compile Update="PatientUsingAPISteps.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TestHooks.cs">
@@ -63,7 +67,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Update="ComponentTestingOfPatientRegistration.feature">
+    <SpecFlowFeatureFiles Update="APITestingofPatient.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+      <Generator>SpecFlow.Tools.MsBuild.Generation</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="ComponentTestingofPatient.feature">
       <Generator>SpecFlow.Tools.MsBuild.Generation</Generator>
     </SpecFlowFeatureFiles>
   </ItemGroup>
