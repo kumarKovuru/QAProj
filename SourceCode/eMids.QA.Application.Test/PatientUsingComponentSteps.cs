@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using TechTalk.SpecFlow;
 
 namespace eMids.QA.Application.Test
@@ -13,6 +14,8 @@ namespace eMids.QA.Application.Test
     {
         private ActionResult _result;
         static Common.Patient _patient;
+        private HttpResponseMessage _resultAPI;
+        private string webURL = "http://172.16.103.51:5070/api/";
 
         [Given(@"user provides First Name as (.*)")]
         public void GivenUserProvidesFirstNameAs(string firstName)
@@ -238,5 +241,37 @@ namespace eMids.QA.Application.Test
         {
             Assert.AreEqual(true, _patient == null);
         }
+
+        [When(@"User Calls UpdatePatientIntegrationAPI method")]
+        public void WhenUserCallsUpdatePatientIntegrationAPIMethod()
+        {
+            Common.Patient patient = new Common.Patient()
+            {
+                FirstName = Convert.ToString((ScenarioContext.Current["FirstName"])),
+                LastName = Convert.ToString((ScenarioContext.Current["LastName"])),
+                MemberId = Convert.ToString((ScenarioContext.Current["MemberId"])),
+                DateOfBirth = Convert.ToDateTime((ScenarioContext.Current["DateOfBirth"])),
+                Gender = Convert.ToString((ScenarioContext.Current["Gender"])),
+                Height = Convert.ToSingle((ScenarioContext.Current["Height"])),
+                Weight = Convert.ToSingle((ScenarioContext.Current["Weight"])),
+                PhoneNumber = Convert.ToString((ScenarioContext.Current["PhoneNumber"])),
+                Identifier = _patient.Identifier,
+                PatientId = _patient.PatientId
+            };
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(webURL);
+                var responseTask = client.PutAsJsonAsync<Common.Patient>("Patient/UpdatePatient", patient);
+                responseTask.Wait();
+                _resultAPI = responseTask.Result;
+            }
+        }
+        [Then(@"UpdatePatientIntegrationAPI is successful")]
+        public void ThenUpdatePatientIntegrationAPIIsSuccessful()
+        {
+            Assert.IsTrue(_resultAPI.IsSuccessStatusCode);
+        }
+
     }
+
 }

@@ -55,6 +55,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Include="IntegrationTesting.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="PatientUsingComponentSteps.cs">
       <SubType>Code</SubType>
     </Compile>
