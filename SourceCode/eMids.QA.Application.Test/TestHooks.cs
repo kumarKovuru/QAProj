@@ -14,7 +14,8 @@ namespace eMids.QA.Application.Test
         private static ExtentTest featureName;
         private static ExtentTest scenario;
         private static ExtentReports extent;
-        private static readonly string PathReport = @"E:\Excelpath\ExtentReport.html";
+        private static readonly string PathReport = Path.Combine(@"E:\Excelpath", "ExtentReport " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".html");
+
         // private readonly ScenarioContext scenarioContext;
 
         [BeforeFeature]

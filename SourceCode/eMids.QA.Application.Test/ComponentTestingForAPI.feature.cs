@@ -20,23 +20,23 @@ namespace eMids.QA.Application.Test
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Component testing of patient")]
-    public partial class ComponentTestingOfPatientFeature
+    [NUnit.Framework.DescriptionAttribute("Component Testing For API")]
+    public partial class ComponentTestingForAPIFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "ComponentTestingofPatient.feature"
+#line 1 "ComponentTestingForAPI.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Component testing of patient", "Description:  The purpose of this feature is to create, Read, Update and Delete t" +
-                    "he patient using Component.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Component Testing For API", "Description:  The purpose of this feature is to create, Read, Update and Delete t" +
+                    "he patient using API calls.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,14 +75,21 @@ namespace eMids.QA.Application.Test
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("1 CREATE - New Patient created successfully with valid data for all the fields")]
+        [NUnit.Framework.DescriptionAttribute("1 CREATE - New Patient created successfully with valid data for all the fields us" +
+            "ing API")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void _1CREATE_NewPatientCreatedSuccessfullyWithValidDataForAllTheFields()
+        [NUnit.Framework.TestCaseAttribute("Jojo", "John", "456", "03-04-20", "170.12", "1234567890", "Male", "56.67", null)]
+        public virtual void _1CREATE_NewPatientCreatedSuccessfullyWithValidDataForAllTheFieldsUsingAPI(string firstName, string lastName, string memberId, string dateOfBirth, string height, string phoneNumber, string gender, string weight, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 CREATE - New Patient created successfully with valid data for all the fields", null, new string[] {
-                        "mytag"});
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 CREATE - New Patient created successfully with valid data for all the fields us" +
+                    "ing API", null, @__tags);
 #line 5
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -104,49 +111,49 @@ namespace eMids.QA.Application.Test
             {
                 this.ScenarioStart();
 #line 6
-    testRunner.Given("user provides First Name as \"Jojo\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("user provides First Name as {0}", firstName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    testRunner.And("user provides Last Name as \"John\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("user provides Last Name as {0}", lastName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.And("user provides Member Id as \"456\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("user provides Member Id as {0}", memberId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
- testRunner.And("user provides Date of Birth as \"03-04-20\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides Date of Birth as {0}", dateOfBirth), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.And("user provides Height Id as \"170.12\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides Height Id as {0}", height), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.And("user provides PhoneNumber Id as \"1234567890\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides PhoneNumber Id as {0}", phoneNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
- testRunner.And("user provides Gender Id as \"Male\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides Gender Id as {0}", gender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
- testRunner.And("user provides Weight Id as \"56.67\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides Weight Id as {0}", weight), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
- testRunner.When("User Calls NewPatientRegistration method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("User Calls NewPatientRegistrationAPI method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
-    testRunner.Then("NewPatientRegistration is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("NewPatientRegistrationAPI is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("2 GET - Get newly created Patient")]
+        [NUnit.Framework.DescriptionAttribute("2 GET - Get newly created Patient using API.")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void _2GET_GetNewlyCreatedPatient()
+        public virtual void _2GET_GetNewlyCreatedPatientUsingAPI_()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 GET - Get newly created Patient", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 GET - Get newly created Patient using API.", null, new string[] {
                         "mytag"});
-#line 18
+#line 21
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -166,26 +173,33 @@ namespace eMids.QA.Application.Test
             else
             {
                 this.ScenarioStart();
-#line 19
-    testRunner.When("user Calls LastCreatedPatient method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+    testRunner.When("user Calls GetPatientByIdAPI method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 20
- testRunner.Then("GetLastCreatedPatient is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 23
+ testRunner.Then("GetPatientByIdAPI is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("3 UPDATE - Patient Updated successfully with valid data for all the fields")]
+        [NUnit.Framework.DescriptionAttribute("3 UPDATE - Patient Updated successfully with valid data for all the fields using " +
+            "API")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void _3UPDATE_PatientUpdatedSuccessfullyWithValidDataForAllTheFields()
+        [NUnit.Framework.TestCaseAttribute("Jojo Updated", "John Updated", "123", "03-03-20", "175.12", "1234567", "female", "50.67", null)]
+        public virtual void _3UPDATE_PatientUpdatedSuccessfullyWithValidDataForAllTheFieldsUsingAPI(string firstName, string lastName, string memberId, string dateOfBirth, string height, string phoneNumber, string gender, string weight, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 UPDATE - Patient Updated successfully with valid data for all the fields", null, new string[] {
-                        "mytag"});
-#line 23
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 UPDATE - Patient Updated successfully with valid data for all the fields using " +
+                    "API", null, @__tags);
+#line 26
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -205,50 +219,50 @@ namespace eMids.QA.Application.Test
             else
             {
                 this.ScenarioStart();
-#line 24
-    testRunner.Given("user provides First Name as \"Jojo Updated\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 25
-    testRunner.And("user provides Last Name as \"John Updated\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 26
-    testRunner.And("user provides Member Id as \"123\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 27
- testRunner.And("user provides Date of Birth as \"03-03-20\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.Given(string.Format("user provides First Name as {0}", firstName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 28
- testRunner.And("user provides Height Id as \"175.12\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("user provides Last Name as {0}", lastName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
- testRunner.And("user provides PhoneNumber Id as \"1234567\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("user provides Member Id as {0}", memberId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 30
- testRunner.And("user provides Gender Id as \"female\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides Date of Birth as {0}", dateOfBirth), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 31
- testRunner.And("user provides Weight Id as \"50.67\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("user provides Height Id as {0}", height), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 32
- testRunner.When("User Calls UpdatePatient method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("user provides PhoneNumber Id as {0}", phoneNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 33
-   testRunner.Then("UpdatePatient is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And(string.Format("user provides Gender Id as {0}", gender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 34
+ testRunner.And(string.Format("user provides Weight Id as {0}", weight), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 35
+ testRunner.When("User Calls UpdatePatientAPI method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 36
+   testRunner.Then("UpdatePatientAPI is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("4 GET - Get newly Updated Patient")]
+        [NUnit.Framework.DescriptionAttribute("4 GET - Get newly Updated Patient using API")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void _4GET_GetNewlyUpdatedPatient()
+        public virtual void _4GET_GetNewlyUpdatedPatientUsingAPI()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 GET - Get newly Updated Patient", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 GET - Get newly Updated Patient using API", null, new string[] {
                         "mytag"});
-#line 36
+#line 42
    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -268,26 +282,26 @@ namespace eMids.QA.Application.Test
             else
             {
                 this.ScenarioStart();
-#line 37
-    testRunner.When("user Calls LastUpdatedPatient method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 43
+    testRunner.When("user Calls GetPatientByIdAPI method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 38
- testRunner.Then("GetLastUpdatedPatient is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 44
+ testRunner.Then("GetPatientByIdAPI is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("5 DELETE - Patient Deleted successfully with Patient Id")]
+        [NUnit.Framework.DescriptionAttribute("5 DELETE - Patient Deleted successfully with Patient Id using API")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void _5DELETE_PatientDeletedSuccessfullyWithPatientId()
+        public virtual void _5DELETE_PatientDeletedSuccessfullyWithPatientIdUsingAPI()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 DELETE - Patient Deleted successfully with Patient Id", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 DELETE - Patient Deleted successfully with Patient Id using API", null, new string[] {
                         "mytag"});
-#line 41
+#line 47
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -307,26 +321,26 @@ namespace eMids.QA.Application.Test
             else
             {
                 this.ScenarioStart();
-#line 42
-     testRunner.When("user Calls DeletePatient method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 48
+     testRunner.When("user Calls DeletePatientAPI method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 43
- testRunner.Then("DeletePatient is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 49
+ testRunner.Then("DeletePatientAPI is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("6 GET - Get newly Deleted Patient")]
+        [NUnit.Framework.DescriptionAttribute("6 GET - Get newly Deleted Patient using API")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void _6GET_GetNewlyDeletedPatient()
+        public virtual void _6GET_GetNewlyDeletedPatientUsingAPI()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6 GET - Get newly Deleted Patient", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6 GET - Get newly Deleted Patient using API", null, new string[] {
                         "mytag"});
-#line 46
+#line 52
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -346,11 +360,11 @@ namespace eMids.QA.Application.Test
             else
             {
                 this.ScenarioStart();
-#line 47
-    testRunner.When("user Calls LastDeletedPatient method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 53
+    testRunner.When("user Calls GetPatientByIdAPI method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 48
- testRunner.Then("GetLastDeletedPatient is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 54
+ testRunner.Then("GetPatientByIdAPI is successful with null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

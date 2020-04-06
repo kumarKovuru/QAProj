@@ -14,7 +14,7 @@ namespace eMids.QA.Application.Test
         private ActionResult _result;
         static Common.Patient _patient;
 
-        [Given(@"user provides First Name as ""(.*)""")]
+        [Given(@"user provides First Name as (.*)")]
         public void GivenUserProvidesFirstNameAs(string firstName)
         {
             if (!ScenarioContext.Current.ContainsKey("FirstName"))
@@ -27,7 +27,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides Last Name as ""(.*)""")]
+        [Given(@"user provides Last Name as (.*)")]
         public void GivenUserProvidesLastNameAs(string lastName)
         {
             if (!ScenarioContext.Current.ContainsKey("LastName"))
@@ -40,7 +40,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides Member Id as ""(.*)""")]
+        [Given(@"user provides Member Id as (.*)")]
         public void GivenUserProvidesMemberIdAs(string memberId)
         {
             if (!ScenarioContext.Current.ContainsKey("MemberId"))
@@ -53,7 +53,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides Date of Birth as ""(.*)""")]
+        [Given(@"user provides Date of Birth as (.*)")]
         public void GivenUserProvidesDateOfBirthAs(string dateOfBirth)
         {
             if (!ScenarioContext.Current.ContainsKey("DateOfBirth"))
@@ -66,7 +66,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides Height Id as ""(.*)""")]
+        [Given(@"user provides Height Id as (.*)")]
         public void GivenUserProvidesHeightIdAs(Decimal height)
         {
             if (!ScenarioContext.Current.ContainsKey("Height"))
@@ -79,7 +79,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides PhoneNumber Id as ""(.*)""")]
+        [Given(@"user provides PhoneNumber Id as (.*)")]
         public void GivenUserProvidesPhoneNumberIdAs(int phoneNumber)
         {
             if (!ScenarioContext.Current.ContainsKey("PhoneNumber"))
@@ -92,7 +92,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides Gender Id as ""(.*)""")]
+        [Given(@"user provides Gender Id as (.*)")]
         public void GivenUserProvidesGenderIdAs(string gender)
         {
             if (!ScenarioContext.Current.ContainsKey("Gender"))
@@ -105,7 +105,7 @@ namespace eMids.QA.Application.Test
             }
         }
 
-        [Given(@"user provides Weight Id as ""(.*)""")]
+        [Given(@"user provides Weight Id as (.*)")]
         public void GivenUserProvidesWeightIdAs(Decimal weight)
         {
             if (!ScenarioContext.Current.ContainsKey("Weight"))
