@@ -45,13 +45,25 @@ namespace eMids.QA.Application.Test
             if (scenarioContext.TestError == null)
             {
                 if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
+                    if (ScenarioContext.Current.ScenarioExecutionStatus.ToString() == "StepDefinitionPending")
+                        scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+                    else
+                        scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
+                    if (ScenarioContext.Current.ScenarioExecutionStatus.ToString() == "StepDefinitionPending")
+                        scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+                    else
+                        scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
+                    if (ScenarioContext.Current.ScenarioExecutionStatus.ToString() == "StepDefinitionPending")
+                        scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+                    else
+                        scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
+                    if (ScenarioContext.Current.ScenarioExecutionStatus.ToString() == "StepDefinitionPending")
+                        scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+                    else
+                        scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
             }
             else if (scenarioContext.TestError != null)
             {

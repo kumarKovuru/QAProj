@@ -121,6 +121,11 @@ namespace eMids.QA.Application.Test
             }
         }
 
+        [When(@"User Calls NewPatientRegistrationAPIPending method")]
+        public void WhenUserCallsNewPatientRegistrationAPIPendingMethod()
+        {
+            ScenarioContext.Current.Pending();
+        }
 
         [When(@"User Calls NewPatientRegistration method")]
         public void WhenUserCallsNewPatientRegistrationMethod()
