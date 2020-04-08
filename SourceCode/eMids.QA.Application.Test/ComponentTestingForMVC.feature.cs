@@ -76,12 +76,12 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("1 CREATE - New Patient created successfully with valid data for all the fields")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("MVCTest")]
         [NUnit.Framework.TestCaseAttribute("Moso", "John", "667", "12-09-20", "160.12", "1234569990", "Male", "76.67", null)]
         public virtual void _1CREATE_NewPatientCreatedSuccessfullyWithValidDataForAllTheFields(string firstName, string lastName, string memberId, string dateOfBirth, string height, string phoneNumber, string gender, string weight, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag"};
+                    "MVCTest"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -144,13 +144,13 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("2 GET - Get newly created Patient")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("MVCTest")]
         public virtual void _2GET_GetNewlyCreatedPatient()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "MVCTest"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 GET - Get newly created Patient", null, new string[] {
-                        "mytag"});
+                        "MVCTest"});
 #line 21
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -183,12 +183,12 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("3 UPDATE - Patient Updated successfully with valid data for all the fields")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("MVCTest")]
         [NUnit.Framework.TestCaseAttribute("Moso Update", "John update", "777", "12-09-85", "190.12", "1234563330", "Female", "96.88", null)]
         public virtual void _3UPDATE_PatientUpdatedSuccessfullyWithValidDataForAllTheFields(string firstName, string lastName, string memberId, string dateOfBirth, string height, string phoneNumber, string gender, string weight, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag"};
+                    "MVCTest"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -251,13 +251,13 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("4 GET - Get newly Updated Patient")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("MVCTest")]
         public virtual void _4GET_GetNewlyUpdatedPatient()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "MVCTest"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 GET - Get newly Updated Patient", null, new string[] {
-                        "mytag"});
+                        "MVCTest"});
 #line 42
    this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -290,13 +290,13 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("5 DELETE - Patient Deleted successfully with Patient Id")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("MVCTest")]
         public virtual void _5DELETE_PatientDeletedSuccessfullyWithPatientId()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "MVCTest"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 DELETE - Patient Deleted successfully with Patient Id", null, new string[] {
-                        "mytag"});
+                        "MVCTest"});
 #line 47
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -329,13 +329,13 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("6 GET - Get newly Deleted Patient")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("MVCTest")]
         public virtual void _6GET_GetNewlyDeletedPatient()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "MVCTest"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6 GET - Get newly Deleted Patient", null, new string[] {
-                        "mytag"});
+                        "MVCTest"});
 #line 52
  this.ScenarioInitialize(scenarioInfo);
 #line hidden

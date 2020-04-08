@@ -76,12 +76,12 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("1 CREATE - New Patient created successfully with valid data for all the fields")]
-        [NUnit.Framework.CategoryAttribute("MVCScenarios")]
+        [NUnit.Framework.CategoryAttribute("IntegrationTest")]
         [NUnit.Framework.TestCaseAttribute("Moso", "John", "667", "12-09-20", "160.12", "1234569990", "Male", "76.67", null)]
         public virtual void _1CREATE_NewPatientCreatedSuccessfullyWithValidDataForAllTheFields(string firstName, string lastName, string memberId, string dateOfBirth, string height, string phoneNumber, string gender, string weight, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "MVCScenarios"};
+                    "IntegrationTest"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -144,13 +144,13 @@ namespace eMids.QA.Application.Test
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("2 GET - Get newly created Patient")]
-        [NUnit.Framework.CategoryAttribute("MVCScenarios")]
+        [NUnit.Framework.CategoryAttribute("IntegrationTest")]
         public virtual void _2GET_GetNewlyCreatedPatient()
         {
             string[] tagsOfScenario = new string[] {
-                    "MVCScenarios"};
+                    "IntegrationTest"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 GET - Get newly created Patient", null, new string[] {
-                        "MVCScenarios"});
+                        "IntegrationTest"});
 #line 21
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -184,12 +184,12 @@ namespace eMids.QA.Application.Test
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("3 UPDATE - Patient Updated successfully with valid data for all the fields using " +
             "API")]
-        [NUnit.Framework.CategoryAttribute("APIScenarios")]
+        [NUnit.Framework.CategoryAttribute("IntegrationTest")]
         [NUnit.Framework.TestCaseAttribute("Jojo Integration", "John Integration", "123", "03-03-20", "175.12", "1234567", "female", "50.67", null)]
         public virtual void _3UPDATE_PatientUpdatedSuccessfullyWithValidDataForAllTheFieldsUsingAPI(string firstName, string lastName, string memberId, string dateOfBirth, string height, string phoneNumber, string gender, string weight, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "APIScenarios"};
+                    "IntegrationTest"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

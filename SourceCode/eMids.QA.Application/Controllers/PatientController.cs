@@ -8,19 +8,17 @@ namespace eMids.QA.Application.Controllers
 {
     public class PatientController : Controller
     {
-        private readonly string WebAPIUrl = "http://172.16.103.51:5070/api/";
-
-        //private readonly IApplicationConfiguration _appConfig;
-        //public PatientController(IApplicationConfiguration appConfig)
-        //{
-        //    _appConfig = appConfig;
-        //}
+        private readonly IApplicationConfiguration _appConfig;
+        public PatientController(IApplicationConfiguration appConfig)
+        {
+            _appConfig = appConfig;
+        }
         public ActionResult Index()
         {
             List<Common.Patient> patients = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(WebAPIUrl);
+                client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientList");
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -52,7 +50,7 @@ namespace eMids.QA.Application.Controllers
             Common.Patient patient = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(WebAPIUrl);
+                client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -77,7 +75,7 @@ namespace eMids.QA.Application.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(WebAPIUrl);
+                    client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                     var responseTask = client.PostAsJsonAsync<Common.Patient>("Patient/CreatePatient", patient);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -103,7 +101,7 @@ namespace eMids.QA.Application.Controllers
             Common.Patient patient = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(WebAPIUrl);
+                client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -129,7 +127,7 @@ namespace eMids.QA.Application.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(WebAPIUrl);
+                    client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                     var responseTask = client.PutAsJsonAsync<Common.Patient>("Patient/UpdatePatient", patient);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -158,7 +156,7 @@ namespace eMids.QA.Application.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(WebAPIUrl);
+                    client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                     var responseTask = client.DeleteAsync("Patient/DeletePatient?id=" + id.ToString());
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -185,7 +183,7 @@ namespace eMids.QA.Application.Controllers
             Common.Patient patient = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(WebAPIUrl);
+                client.BaseAddress = new Uri(_appConfig.WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientById?id=" + id.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;

@@ -12,7 +12,7 @@ namespace eMids.QA.Application.Test
         private HttpResponseMessage _result;
         static int patientId;
         static Common.Patient patient;
-        private string webURL = "http://172.16.103.51:5070/api/";
+        static SystemConfig system = new SystemConfig();
 
         [When(@"User Calls NewPatientRegistrationAPI method")]
         public void WhenUserCallsNewPatientRegistrationAPIMethod()
@@ -30,7 +30,7 @@ namespace eMids.QA.Application.Test
             };
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(webURL);
+                client.BaseAddress = new Uri(system._appConfig.WebAPIUrl);
                 var responseTask = client.PostAsJsonAsync<Common.Patient>("Patient/CreatePatient", _patient);
                 responseTask.Wait();
                 _result = responseTask.Result;
@@ -54,7 +54,7 @@ namespace eMids.QA.Application.Test
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(webURL);
+                client.BaseAddress = new Uri(system._appConfig.WebAPIUrl);
                 var responseTask = client.GetAsync("Patient/GetPatientById?id=" + patientId.ToString());
                 responseTask.Wait();
                 _result = responseTask.Result;
@@ -88,12 +88,11 @@ namespace eMids.QA.Application.Test
                 Height = Convert.ToSingle((ScenarioContext.Current["Height"])),
                 Weight = Convert.ToSingle((ScenarioContext.Current["Weight"])),
                 PhoneNumber = Convert.ToString((ScenarioContext.Current["PhoneNumber"])),
-                 Identifier = patient.Identifier,
-                 PatientId = patient.PatientId
+                PatientId = patient.PatientId
             };
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(webURL);
+                client.BaseAddress = new Uri(system._appConfig.WebAPIUrl);
                 var responseTask = client.PutAsJsonAsync<Common.Patient>("Patient/UpdatePatient", _patient);
                 responseTask.Wait();
                 _result = responseTask.Result;
@@ -110,7 +109,7 @@ namespace eMids.QA.Application.Test
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(webURL);
+                client.BaseAddress = new Uri(system._appConfig.WebAPIUrl);
                 var responseTask = client.DeleteAsync("Patient/DeletePatient?id=" + patient.PatientId.ToString());
                 responseTask.Wait();
                 _result = responseTask.Result;

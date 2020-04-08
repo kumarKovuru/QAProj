@@ -15,7 +15,7 @@ namespace eMids.QA.Application.Test
         private ActionResult _result;
         static Common.Patient _patient;
         private HttpResponseMessage _resultAPI;
-        private string webURL = "http://172.16.103.51:5070/api/";
+        static SystemConfig system = new SystemConfig();
 
         [Given(@"user provides First Name as (.*)")]
         public void GivenUserProvidesFirstNameAs(string firstName)
@@ -131,7 +131,7 @@ namespace eMids.QA.Application.Test
         public void WhenUserCallsNewPatientRegistrationMethod()
         {
 
-            PatientController con = new PatientController();
+            PatientController con = new PatientController(system._appConfig);
             Common.Patient patient = new Common.Patient()
             {
                 FirstName = Convert.ToString((ScenarioContext.Current["FirstName"])),
@@ -158,7 +158,7 @@ namespace eMids.QA.Application.Test
         [When(@"user Calls LastCreatedPatient method")]
         public void WhenUserCallsLastCreatedPatientMethod()
         {
-            PatientController con = new PatientController();
+            PatientController con = new PatientController(system._appConfig);
             var actionResult = con.Index();
             var viewResult = actionResult as ViewResult;
             var patients = ((List<Common.Patient>)viewResult.Model);
@@ -174,7 +174,7 @@ namespace eMids.QA.Application.Test
         [When(@"User Calls UpdatePatient method")]
         public void WhenUserCallsUpdatePatientMethod()
         {
-            PatientController con = new PatientController();
+            PatientController con = new PatientController(system._appConfig);
             Common.Patient patient = new Common.Patient()
             {
                 FirstName = Convert.ToString((ScenarioContext.Current["FirstName"])),
@@ -185,7 +185,6 @@ namespace eMids.QA.Application.Test
                 Height = Convert.ToSingle((ScenarioContext.Current["Height"])),
                 Weight = Convert.ToSingle((ScenarioContext.Current["Weight"])),
                 PhoneNumber = Convert.ToString((ScenarioContext.Current["PhoneNumber"])),
-                Identifier = _patient.Identifier,
                 PatientId = _patient.PatientId
             };
             _result = con.Edit(patient);
@@ -203,7 +202,7 @@ namespace eMids.QA.Application.Test
         [When(@"user Calls LastUpdatedPatient method")]
         public void WhenUserCallsLastUpdatedPatientMethod()
         {
-            PatientController con = new PatientController();
+            PatientController con = new PatientController(system._appConfig);
             var actionResult = con.GetById(_patient.PatientId);
             var viewResult = actionResult as ViewResult;
             _patient = null;
@@ -219,7 +218,7 @@ namespace eMids.QA.Application.Test
         [When(@"user Calls DeletePatient method")]
         public void WhenUserCallsDeletePatientMethod()
         {
-            PatientController con = new PatientController();
+            PatientController con = new PatientController(system._appConfig);
             _result = con.Delete(_patient.PatientId);
         }
 
@@ -234,7 +233,7 @@ namespace eMids.QA.Application.Test
         [When(@"user Calls LastDeletedPatient method")]
         public void WhenUserCallsLastDeletedPatientMethod()
         {
-            PatientController con = new PatientController();
+            PatientController con = new PatientController(system._appConfig);
             var actionResult = con.GetById(_patient.PatientId);
             var viewResult = actionResult as ViewResult;
             _patient = null;
@@ -260,12 +259,11 @@ namespace eMids.QA.Application.Test
                 Height = Convert.ToSingle((ScenarioContext.Current["Height"])),
                 Weight = Convert.ToSingle((ScenarioContext.Current["Weight"])),
                 PhoneNumber = Convert.ToString((ScenarioContext.Current["PhoneNumber"])),
-                Identifier = _patient.Identifier,
                 PatientId = _patient.PatientId
             };
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(webURL);
+                client.BaseAddress = new Uri(system._appConfig.WebAPIUrl);
                 var responseTask = client.PutAsJsonAsync<Common.Patient>("Patient/UpdatePatient", patient);
                 responseTask.Wait();
                 _resultAPI = responseTask.Result;

@@ -39,7 +39,5 @@ namespace eMids.QA.Application.Common
 
         public float Weight { get; set; }
 
-        public List<SelectListItem> Genders = new List<SelectListItem> { new SelectListItem { Text = "Male", Value = "Male" }, new SelectListItem { Text = "Female", Value = "Female" } };
-
     }
 }
